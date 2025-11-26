@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] EdgeCollider2D waterCollider;
     [SerializeField] float linearSpeed;

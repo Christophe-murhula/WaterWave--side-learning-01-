@@ -48,10 +48,12 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Player\PlayerMissileLunch.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerScreenBoundary.cs" />
     <Compile Include="Assets\Scripts\ConstantWaterPosition.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SpringsController.cs" />
     <Compile Include="Assets\Scripts\Spring.cs" />
-    <Compile Include="Assets\Scripts\Player\InputManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
