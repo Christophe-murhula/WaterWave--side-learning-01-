@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4570048932922295283}
   - component: {fileID: 3908731294823318134}
   - component: {fileID: 5137319310612572070}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterSpriteShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}

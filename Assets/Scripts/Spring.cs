@@ -35,6 +35,11 @@ public class Spring : MonoBehaviour
     {
         float velocity_modifier = 1.2f * Mathf.Abs(WAVE_DEFAULT_POINT.y - transform.localPosition.y);
         myBody.linearVelocityX = velocity_x + Mathf.Sign(velocity_x) * velocity_modifier;
+
+        if (myBody.linearVelocityY != 0f)
+        {
+            myBody.linearVelocityY = Mathf.Lerp(myBody.linearVelocityY, 0f, .05f);
+        }
     }
 
     public void HorizontalMovementUpdate(float gap)
