@@ -52,7 +52,7 @@ public class SpringsController : MonoBehaviour
             var spring_obj = Instantiate(spring_object, springs_points_transform, false);
             spring_obj.transform.localPosition = wave_point;
             var spring = spring_obj.GetComponent<Spring>();
-            spring.Init(waterSpline, waves_count, wave_point, index + i - 1);
+            spring.Init(waterSpline, wave_point, index + i - 1);
             springs.Add(spring);
         }
     }

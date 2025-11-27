@@ -6,7 +6,6 @@ public class Spring : MonoBehaviour
 {
     private Spline spline;
     private Vector3 WAVE_DEFAULT_POINT = new(0, 0, -1);
-    private int waves_points_count;
     int wave_index;
     private float velocity = 0f, force = 0f, height = 0f, target_height = 0f;
 
@@ -20,10 +19,9 @@ public class Spring : MonoBehaviour
         velocity_x = DEFAULT_VELOCITY * Mathf.Sign(UnityEngine.Random.Range(-1, 2));
     }
 
-    public void Init(Spline s, int waves_count, Vector3 point, int index)
+    public void Init(Spline s, Vector3 point, int index)
     {
         spline = s;
-        waves_points_count = waves_count;
         wave_index = index;
 
         WAVE_DEFAULT_POINT = new Vector3(point.x, point.y, point.z);
@@ -39,6 +37,29 @@ public class Spring : MonoBehaviour
         if (myBody.linearVelocityY != 0f)
         {
             myBody.linearVelocityY = Mathf.Lerp(myBody.linearVelocityY, 0f, .05f);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // generate wave
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boat"))
+        {
+            myBody.linearVelocityY = 2f;
+
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            // create wave only if the player is under the default height (ie. y-coord)
+            if (collision.transform.position.y <= target_height)
+            {
+                myBody.linearVelocityY = 4f;
+            }
+
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Missiles"))
+        {
+            myBody.linearVelocityY = 5f;
         }
     }
 

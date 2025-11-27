@@ -14,9 +14,9 @@ TagManager:
   - Springs
   - Player
   - Boat
-  - 
-  - 
-  - 
+  - Missiles
+  - Ground
+  - Icebergs
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: middleGameplay
+    uniqueID: 829499339
+    locked: 0
+  - name: frontGameplay
+    uniqueID: 1291639111
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

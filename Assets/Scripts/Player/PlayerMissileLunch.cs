@@ -7,6 +7,8 @@ public class PlayerMissileLunch : MonoBehaviour
     [SerializeField] Transform CanonTransform;
     Rigidbody2D myBody;
 
+    float missileSpeed = 10f;
+
     void Start()
     {
         myBody = GetComponent<Rigidbody2D>();
@@ -22,22 +24,13 @@ public class PlayerMissileLunch : MonoBehaviour
 
     void LaunchMissile()
     {
-        print(transform.right);
         GameObject missile = Instantiate(Missile);
-        missile.transform.position = CanonTransform.position;
         Rigidbody2D missileBody = missile.GetComponent<Rigidbody2D>();
+
+        missile.transform.position = CanonTransform.position;
         missileBody.rotation = myBody.rotation - 90f;
 
-        var missileSpeed = 10f;
-        if (myBody.linearVelocity.magnitude == 0f)
-        {
-            // launch upward
-            missileBody.linearVelocityY = missileSpeed;
-        }
-        else
-        {
-            missileBody.linearVelocityY = transform.right.y * missileSpeed;
-            missileBody.linearVelocityX = transform.right.x * missileSpeed;
-        }
+        missileBody.linearVelocityY = transform.right.y * missileSpeed;
+        missileBody.linearVelocityX = transform.right.x * missileSpeed;
     }
 }

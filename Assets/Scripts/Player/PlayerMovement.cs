@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float linearSpeed;
 
     Rigidbody2D myBody;
-    CapsuleCollider2D myBodyCollider;
-    CircleCollider2D myRadiusTriggerer;
     Vector2 linearSpeedMultiplier = new(0f, 0f);
     float currentAngle, targetAngle;
 
@@ -16,9 +14,6 @@ public class PlayerMovement : MonoBehaviour
     {
         myBody = GetComponent<Rigidbody2D>();
         currentAngle = targetAngle = myBody.rotation;
-
-        myBodyCollider = GetComponent<CapsuleCollider2D>();
-        myRadiusTriggerer = GetComponent<CircleCollider2D>();
     }
 
     void FixedUpdate()
@@ -26,46 +21,26 @@ public class PlayerMovement : MonoBehaviour
         // Lerp angle between target and current angle
         if (currentAngle != targetAngle)
         {
-            currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, .07f);
+            currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, .2f);
             myBody.SetRotation(currentAngle);
         }
+
         // Lerp velocity to simulate inertia
         myBody.linearVelocityX = Mathf.Lerp(myBody.linearVelocityX, linearSpeed * linearSpeedMultiplier.x, .07f);
         myBody.linearVelocityY = Mathf.Lerp(myBody.linearVelocityY, linearSpeed * linearSpeedMultiplier.y, .07f);
-    }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        bool isWater = collision.gameObject.layer == LayerMask.NameToLayer("Water");
-        if (isWater && myBody.bodyType != RigidbodyType2D.Dynamic)
+        // add gravity if we are out of water, reset it otherwise
+        if (IsOutofWater())
         {
-            myBody.bodyType = RigidbodyType2D.Dynamic;
+            myBody.gravityScale = 1.5f;
+            myBody.linearVelocity = Vector2.zero;
         }
-
-        // Generate wave
-        bool isSpring = collision.gameObject.layer == LayerMask.NameToLayer("Springs");
-        if (isSpring)
+        else
         {
-            Rigidbody2D springBody = collision.gameObject.GetComponent<Rigidbody2D>();
-            springBody.linearVelocityY = 10f;
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        bool isWater = collision.gameObject.layer == LayerMask.NameToLayer("Water");
-        if (isWater && myBody.bodyType != RigidbodyType2D.Dynamic)
-        {
-            myBody.bodyType = RigidbodyType2D.Dynamic;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        bool isWater = collision.gameObject.layer == LayerMask.NameToLayer("Water");
-        if (isWater && myBody.bodyType != RigidbodyType2D.Kinematic)
-        {
-            myBody.bodyType = RigidbodyType2D.Kinematic;
+            if (myBody.gravityScale != 0f)
+            {
+                myBody.gravityScale = 0f;
+            }
         }
     }
 
@@ -84,5 +59,12 @@ public class PlayerMovement : MonoBehaviour
             targetAngle = Mathf.Atan2(linearSpeedMultiplier.y, linearSpeedMultiplier.x);
         }
         targetAngle *= Mathf.Rad2Deg;
+    }
+
+    bool IsOutofWater()
+    {
+        var waterTopCoordinate = waterCollider.bounds.max.y;
+
+        return waterTopCoordinate < transform.position.y;
     }
 }
