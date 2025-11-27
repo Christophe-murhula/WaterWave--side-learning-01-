@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7766230561504574747}
   - component: {fileID: 6978888407358625625}
   - component: {fileID: -9137646028574170287}
+  - component: {fileID: -6319736151810069914}
   m_Layer: 11
   m_Name: Small IB A.
   m_TagString: Untagged
@@ -279,7 +280,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020759823260734289}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -298,3 +299,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &-6319736151810069914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020759823260734289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9f00bba857e3a42b8504c1ff2d8c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SmallIcebergsPositioning
