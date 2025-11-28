@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -13,6 +14,9 @@ public class BoatLogic : MonoBehaviour
 
     float HP = 1f;
     bool canGetDamage = true;
+
+    float VIGNETTE_DEFAULT_INTENSITY;
+    float VIGNETTE_DEFAULT_Y_POS;
     float VIGNETTE_DEFAULT_SMOOTHNESS;
 
     void Start()
@@ -22,19 +26,14 @@ public class BoatLogic : MonoBehaviour
         mySprite = GetComponent<SpriteRenderer>();
 
         // get the vignette volume
-        Volume[] volumes = FindObjectsByType<Volume>(FindObjectsSortMode.None);
-        foreach (Volume v in volumes)
-        {
-            if (v.priority == 2)
-            {
-                vignetteVolume = v;
+        vignetteVolume = FindFirstObjectByType<Volume>();
 
-                VolumeProfile profile = v.profile;
-                profile.TryGet(out vignette);
+        VolumeProfile profile = vignetteVolume.profile;
+        profile.TryGet(out vignette);
 
-                VIGNETTE_DEFAULT_SMOOTHNESS = vignette.smoothness.value;
-            }
-        }
+        VIGNETTE_DEFAULT_INTENSITY = vignette.intensity.value;
+        VIGNETTE_DEFAULT_Y_POS = vignette.center.value.y;
+        VIGNETTE_DEFAULT_SMOOTHNESS = vignette.smoothness.value;
     }
 
     void Update()
@@ -44,18 +43,6 @@ public class BoatLogic : MonoBehaviour
             return;
         }
         VignetteControl();
-    }
-
-    void FixedUpdate()
-    {
-        if (!canGetDamage && mySprite.color.a == 255f)
-        {
-            mySprite.color = new Color(255f, 255f, 255f, 100f);
-        }
-        else if (canGetDamage && mySprite.color.a == 100f)
-        {
-            mySprite.color = new Color(255f, 255f, 255f, 255f);
-        }
     }
 
     public void GetDamage(float damageAmount, Vector2 contactPoint)
@@ -73,10 +60,10 @@ public class BoatLogic : MonoBehaviour
 
             myParticles.Play();
 
-            // activate vignette
-            vignetteVolume.priority = 2;
-            vignette.active = true;
-            vignette.smoothness.value += .4f;
+            // change vignette
+            vignette.intensity.value += .2f;
+            vignette.center.value = new Vector2(vignette.center.value.x, .6f);
+            vignette.smoothness.value += .45f;
 
             if (!IsAlive())
             {
@@ -96,20 +83,24 @@ public class BoatLogic : MonoBehaviour
         canGetDamage = true;
     }
 
+    /// <summary>
+    /// Modified variables: Intensity, Y-offet, Smoothness
+    /// </summary>
     void VignetteControl()
     {
-        if (vignette.smoothness.value != VIGNETTE_DEFAULT_SMOOTHNESS && vignette.active)
+        if (vignette.smoothness.value > VIGNETTE_DEFAULT_SMOOTHNESS)
         {
-            vignette.smoothness.value = Mathf.Lerp(vignette.smoothness.value, 0f, .05f);
-        }
-        if (vignette.smoothness.value <= VIGNETTE_DEFAULT_SMOOTHNESS)
-        {
-            if (vignette.active)
-            {
-                vignetteVolume.priority = 0;
-                vignette.active = false;
-                vignette.smoothness.value = VIGNETTE_DEFAULT_SMOOTHNESS;
-            }
+            float othersLerp = .03f, smoothnessLerp = .01f;
+
+            // lerp intensity and y-offset
+            var intensity = Mathf.Lerp(vignette.intensity.value, VIGNETTE_DEFAULT_INTENSITY, othersLerp);
+            var yOffset = Mathf.Lerp(vignette.center.value.y, VIGNETTE_DEFAULT_Y_POS, othersLerp);
+
+            vignette.intensity.value = intensity;
+            vignette.center.value = new Vector2(vignette.center.value.x, yOffset);
+
+            // lerp the smoothness
+            vignette.smoothness.value = Mathf.Lerp(vignette.smoothness.value, VIGNETTE_DEFAULT_SMOOTHNESS, smoothnessLerp);
         }
     }
 }

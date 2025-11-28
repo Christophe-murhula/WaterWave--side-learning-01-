@@ -44,9 +44,12 @@ public class MissileDestruction : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        bool isWater = collision.gameObject.layer == LayerMask.NameToLayer("Water");
+        bool canCauseExplosion = (
+            collision.gameObject.layer == LayerMask.NameToLayer("Water") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("Icebergs")
+        );
 
-        if (isWater && !isExplosionGameobjectActive)
+        if (canCauseExplosion && !isExplosionGameobjectActive)
         {
             //activate the explosion game object
             explosionParticleSystem.gameObject.SetActive(true);
