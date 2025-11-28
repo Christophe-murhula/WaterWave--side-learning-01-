@@ -48,14 +48,17 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\SmallIcebergsPositioning.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMissileLunch.cs" />
     <Compile Include="Assets\Scripts\Weapons\MissileDestruction.cs" />
+    <Compile Include="Assets\Scripts\Boat\BoatLogic.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScreenBoundary.cs" />
     <Compile Include="Assets\Scripts\ConstantWaterPosition.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SpringsController.cs" />
+    <Compile Include="Assets\Scripts\Icebergs\SmallIcebergsPositioning.cs" />
+    <Compile Include="Assets\Scripts\Icebergs\IcebergLogic.cs" />
     <Compile Include="Assets\Scripts\Spring.cs" />
+    <Compile Include="Assets\Scripts\Icebergs\IcebergDataSO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1218,12 +1221,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.IK.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">

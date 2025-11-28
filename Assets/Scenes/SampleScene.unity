@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 129832036}
   - component: {fileID: 129832035}
+  - component: {fileID: 129832037}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
   m_IsGlobal: 1
-  priority: 0
+  priority: 1
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 4520f6550a46bc64fb721a5c40f7bb9e, type: 2}
@@ -178,6 +179,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129832037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129832034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 82f43e197dbd3754aa9f336339eda2ca, type: 2}
 --- !u!4 &311443900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7346451572756201590, guid: 248ef662889e741419e742a5439b9fcd, type: 3}
@@ -480,7 +498,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9481585, y: -0.79207087, z: -1}
+  m_LocalPosition: {x: 0.942026, y: -0.79207087, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4080,10 +4098,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiamondIceberg
       objectReference: {fileID: 0}
-    - target: {fileID: 9016784579359171520, guid: 354088fe6f91bad44a28177df8703454, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4097,10 +4111,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1601512966}
     m_Modifications:
-    - target: {fileID: 455414572055893435, guid: 8c5f269f747a61e4db97e3b196652ae3, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2714815736036584056, guid: 8c5f269f747a61e4db97e3b196652ae3, type: 3}
       propertyPath: m_Name
       value: NarrowIceberg
@@ -4169,10 +4179,6 @@ PrefabInstance:
     - target: {fileID: 2565621909514658429, guid: 248ef662889e741419e742a5439b9fcd, type: 3}
       propertyPath: m_Creator
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253109152628089810, guid: 248ef662889e741419e742a5439b9fcd, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7346451572756201590, guid: 248ef662889e741419e742a5439b9fcd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4462,10 +4468,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlattopIceberg
       objectReference: {fileID: 0}
-    - target: {fileID: 8820936635843607683, guid: 92369101d9d599c43a04fffd309ace6e, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4681,10 +4683,6 @@ PrefabInstance:
     - target: {fileID: 2180885096081405008, guid: a6a715c08762a6a4f81ab58b6db290c0, type: 3}
       propertyPath: m_Name
       value: TrapezIceberg B.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210329180590242236, guid: a6a715c08762a6a4f81ab58b6db290c0, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4286877176460719900, guid: a6a715c08762a6a4f81ab58b6db290c0, type: 3}
       propertyPath: m_Creator
