@@ -4850,9 +4850,8 @@ GameObject:
   - component: {fileID: 1416727681618323432}
   - component: {fileID: 6248013752193068178}
   - component: {fileID: 2384913384146363450}
-  - component: {fileID: 1866814604401867803}
   m_Layer: 9
-  m_Name: Missile
+  m_Name: FollowerBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4868,7 +4867,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.19, y: -0.242, z: 0}
-  m_LocalScale: {x: 0.098947056, y: 0.14662649, z: 1}
+  m_LocalScale: {x: 0.22, y: 0.12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8575716932519372169}
@@ -4923,7 +4922,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.2245282, b: 0.2245282, a: 1}
+  m_Color: {r: 0.12384558, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5072,7 +5071,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 2
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -5133,8 +5132,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 15
-      minScalar: 10
+      scalar: 10
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5251,8 +5250,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 0.7
+      scalar: 0.35
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5635,7 +5634,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: -0.45, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 260}
+    m_Rotation: {x: 0, y: 0, z: 265.2}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -5772,7 +5771,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 15
+      value: 7
       mode: 0
       spread: 0
       speed:
@@ -9802,20 +9801,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1866814604401867803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3118839864499631989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e187a5abbedd0c4b91ba9119a59a956, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  explosionParticleSystem: {fileID: 1161798282186410442}
-  explosionOnIcebergParticleSystem: {fileID: 9088690285774366662}
 --- !u!1 &8137194364003727029
 GameObject:
   m_ObjectHideFlags: 0

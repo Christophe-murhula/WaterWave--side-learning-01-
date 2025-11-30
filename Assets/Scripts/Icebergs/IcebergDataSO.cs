@@ -18,4 +18,13 @@ public class IcebergDataSO : ScriptableObject
         return DamageAmount;
     }
 
+    public ushort GetHitsCountBeforeDestruction()
+    {
+        return HitsCountBeforeDestruction;
+    }
+
+    public ushort GetIcebergsCreationCount()
+    {
+        return CreateIcebergsOnDestruction;
+    }
 }

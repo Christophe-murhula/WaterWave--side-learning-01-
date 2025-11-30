@@ -56,8 +56,11 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SpringsController.cs" />
     <Compile Include="Assets\Scripts\Icebergs\SmallIcebergsPositioning.cs" />
+    <Compile Include="Assets\Scripts\Icebergs\ListSmallBergsSO.cs" />
     <Compile Include="Assets\Scripts\Icebergs\IcebergLogic.cs" />
+    <Compile Include="Assets\Scripts\Weapons\FollowerBombLogic.cs" />
     <Compile Include="Assets\Scripts\Spring.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerWavesLogic.cs" />
     <Compile Include="Assets\Scripts\Icebergs\IcebergDataSO.cs" />
   </ItemGroup>
   <ItemGroup>

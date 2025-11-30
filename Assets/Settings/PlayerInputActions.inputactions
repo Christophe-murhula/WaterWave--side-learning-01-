@@ -23,6 +23,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Wave360",
+                    "type": "Button",
+                    "id": "d3cde824-952c-422f-86e7-6f06a5462130",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -199,6 +208,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "118e2b9f-d9fd-49a5-ad3a-2fee33319574",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Hold(duration=0.3)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Wave360",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ce06558-60ee-477d-af92-eac648d02422",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold(duration=0.3)",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Wave360",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

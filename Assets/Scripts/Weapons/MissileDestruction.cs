@@ -3,6 +3,8 @@ using UnityEngine;
 public class MissileDestruction : MonoBehaviour
 {
     [SerializeField] ParticleSystem explosionParticleSystem;
+    [SerializeField] ParticleSystem explosionOnIcebergParticleSystem;
+    ParticleSystem currentExplosion;
 
     ParticleSystem myParticles;
     Rigidbody2D myBody;
@@ -52,18 +54,35 @@ public class MissileDestruction : MonoBehaviour
         if (canCauseExplosion && !isExplosionGameobjectActive)
         {
             //activate the explosion game object
-            explosionParticleSystem.gameObject.SetActive(true);
+            // if iceberg
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Icebergs"))
+            {
+                // set current particle system to iceberg explosion
+                currentExplosion = explosionOnIcebergParticleSystem;
+
+                // cause damages
+                var icebergLogic = collision.GetComponent<IcebergLogic>();
+                icebergLogic.GetDamage(1);
+            }
+            else
+            {
+                // if it is water or something else, set particle to normal explosion
+                currentExplosion = explosionParticleSystem;
+            }
+
+            // activate explosion particles
+            currentExplosion.gameObject.SetActive(true);
             isExplosionGameobjectActive = true;
 
-            // set this particle system shape arc to 360
+            // set missile particle system shape arc to 360
             var particlesShape = myParticles.shape;
             particlesShape.arc = 360f;
 
-            // set alpha to 0
+            // set missile's alpha to 0
             var transparentColor = new Color(0f, 0f, 0f, 0f);
             GetComponent<SpriteRenderer>().color = transparentColor;
 
-            // set velocity to zero
+            // set missile velocity to zero
             myBody.linearVelocity = Vector2.zero;
 
             // start countdown of 3s

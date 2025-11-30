@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ab85d60120b744ea04ac0ba586e986, type: 3}
   m_Name: IcebergSmallsData
   m_EditorClassIdentifier: Assembly-CSharp::IcebergDataSO
-  HitsCountBeforeDestruction: 3
+  HitsCountBeforeDestruction: 4
   DamageAmount: 0.2
   CreateIcebergsOnDestruction: 0
