@@ -11,14 +11,15 @@ public class MissileDestruction : MonoBehaviour
 
     const float LIFETIME = 7f; // destruction after this number of seconds
     bool isExplosionGameobjectActive = false;
-    float watercontact_countdown = 0f;
+    // countdown before explosion
+    float explosionDelay = 0f;
 
     void Start()
     {
         myParticles = GetComponent<ParticleSystem>();
         myBody = GetComponent<Rigidbody2D>();
 
-        // set myParticles trigger to water shape
+        // set myParticles trigger to water shape so they destroy on contact with water
         Component watershapeComponent = FindFirstObjectByType<SpringsController>();
         myParticles.trigger.AddCollider(watershapeComponent);
 
@@ -30,9 +31,9 @@ public class MissileDestruction : MonoBehaviour
     {
         var deltatime = Time.deltaTime;
 
-        if (watercontact_countdown > 0f)
+        if (explosionDelay > 0f)
         {
-            watercontact_countdown -= deltatime;
+            explosionDelay -= deltatime;
         }
         else
         {
@@ -85,8 +86,8 @@ public class MissileDestruction : MonoBehaviour
             // set missile velocity to zero
             myBody.linearVelocity = Vector2.zero;
 
-            // start countdown of 3s
-            watercontact_countdown = 2f;
+            // start countdown of Xs
+            explosionDelay = 2f;
         }
     }
 

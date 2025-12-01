@@ -45,7 +45,7 @@ public class BoatLogic : MonoBehaviour
         VignetteControl();
     }
 
-    public void GetDamage(float damageAmount, Vector2 contactPoint)
+    public void GetDamage(float damageAmount)
     {
         if (IsAlive() && canGetDamage)
         {

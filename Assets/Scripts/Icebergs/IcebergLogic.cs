@@ -57,7 +57,7 @@ public class IcebergLogic : MonoBehaviour
         // if it is with the boat, call the boat "GetDamage" method
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boat"))
         {
-            collision.gameObject.GetComponent<BoatLogic>().GetDamage(data.GetDamageAmount(), collision.GetContact(0).point);
+            collision.gameObject.GetComponent<BoatLogic>().GetDamage(data.GetDamageAmount());
         }
     }
 
