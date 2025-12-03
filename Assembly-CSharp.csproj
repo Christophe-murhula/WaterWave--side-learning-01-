@@ -48,6 +48,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\HPMeter\HPMeterLogic.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMissileLunch.cs" />
     <Compile Include="Assets\Scripts\Weapons\MissileDestruction.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
@@ -56,15 +57,16 @@
     <Compile Include="Assets\Scripts\ConstantWaterPosition.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SpringsController.cs" />
+    <Compile Include="Assets\Scripts\HPMeter\WaterDropsLogic.cs" />
     <Compile Include="Assets\Scripts\Icebergs\SmallIcebergsPositioning.cs" />
     <Compile Include="Assets\Scripts\Icebergs\ListSmallBergsSO.cs" />
     <Compile Include="Assets\Scripts\Icebergs\IcebergLogic.cs" />
     <Compile Include="Assets\Scripts\Weapons\FollowerShooterLogic.cs" />
     <Compile Include="Assets\Scripts\Weapons\FollowerBombLogic.cs" />
-    <Compile Include="Assets\Scripts\HPMeterLogic.cs" />
     <Compile Include="Assets\Scripts\Spring.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWavesLogic.cs" />
     <Compile Include="Assets\Scripts\Icebergs\IcebergDataSO.cs" />
+    <Compile Include="Assets\Scripts\HPMeter\DropDestruction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

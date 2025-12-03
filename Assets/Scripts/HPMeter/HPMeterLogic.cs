@@ -8,13 +8,23 @@ public class HPMeterLogic : MonoBehaviour
     [SerializeField] SpriteShapeController waterLeveler;
     [SerializeField] float AdjustTopscreenOffset;
 
+    WaterDropsLogic waterDropsLogic;
+
     Vector3 defaultTopleftPos, defaultToprightPos;
     const int topleftIndex = 1, toprightIndex = 2;
     const float waterLevelerHeight = 5f;
+    /// <summary>
+    /// The value of the y-coordinate of the two top-points of the waterLeveler spline
+    /// </summary>
+    float yValue;
+
     float lastBoatHP = 0f;
+
 
     private void Start()
     {
+        waterDropsLogic = GetComponent<WaterDropsLogic>();
+
         defaultTopleftPos = waterLeveler.spline.GetPosition(topleftIndex);
         defaultToprightPos = waterLeveler.spline.GetPosition(toprightIndex);
     }
@@ -30,15 +40,32 @@ public class HPMeterLogic : MonoBehaviour
 
     void UpdateWaterMeterSize()
     {
-        if (boatLogic.GetHP() != lastBoatHP)
+        var currentBoatHP = boatLogic.GetHP();
+        if (currentBoatHP != lastBoatHP)
         {
-            lastBoatHP = boatLogic.GetHP();
-            print(lastBoatHP);
+            // set the number of drops to the quantity of damage taken times 10
+            float damageQuantity = lastBoatHP - currentBoatHP;
+            if (damageQuantity > 0f)
+            {
+                int q = Mathf.RoundToInt(damageQuantity * 10);
+
+                waterDropsLogic.RechargeDrops((ushort)(q * 6));
+            }
+
+
+            lastBoatHP = currentBoatHP;
 
             // update the topleft and topright y-coord of the spline
-            var yValue = defaultTopleftPos.y + waterLevelerHeight * lastBoatHP;
-            waterLeveler.spline.SetPosition(topleftIndex, new Vector3(defaultTopleftPos.x, yValue, defaultTopleftPos.z));
-            waterLeveler.spline.SetPosition(toprightIndex, new Vector3(defaultToprightPos.x, yValue, defaultToprightPos.z));
+            yValue = defaultTopleftPos.y + waterLevelerHeight * lastBoatHP;
+        }
+
+        // lerp the y-value when it changes
+        var topleftY = waterLeveler.spline.GetPosition(topleftIndex).y;
+        if (topleftY != yValue)
+        {
+            var yValueLerp = Mathf.Lerp(topleftY, yValue, 0.05f);
+            waterLeveler.spline.SetPosition(topleftIndex, new Vector3(defaultTopleftPos.x, yValueLerp, defaultTopleftPos.z));
+            waterLeveler.spline.SetPosition(toprightIndex, new Vector3(defaultToprightPos.x, yValueLerp, defaultToprightPos.z));
         }
     }
 
