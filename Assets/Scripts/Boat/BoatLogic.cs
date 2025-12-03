@@ -52,6 +52,8 @@ public class BoatLogic : MonoBehaviour
             canGetDamage = false;
 
             HP -= damageAmount;
+            // round to one decimal after the point
+            HP = Mathf.Round(HP * 10f) / 10f;
 
             Invoke("RestoreVulnerability", 1f);
 
@@ -73,9 +75,14 @@ public class BoatLogic : MonoBehaviour
         }
     }
 
+    public float GetHP()
+    {
+        return HP;
+    }
+
     bool IsAlive()
     {
-        return HP > 0F;
+        return HP > 0f;
     }
 
     void RestoreVulnerability()
