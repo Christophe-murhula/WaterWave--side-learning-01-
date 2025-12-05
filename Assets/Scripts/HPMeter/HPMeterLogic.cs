@@ -63,7 +63,7 @@ public class HPMeterLogic : MonoBehaviour
         var topleftY = waterLeveler.spline.GetPosition(topleftIndex).y;
         if (topleftY != yValue)
         {
-            var yValueLerp = Mathf.Lerp(topleftY, yValue, 0.05f);
+            var yValueLerp = Mathf.Lerp(topleftY, yValue, 0.001f);
             waterLeveler.spline.SetPosition(topleftIndex, new Vector3(defaultTopleftPos.x, yValueLerp, defaultTopleftPos.z));
             waterLeveler.spline.SetPosition(toprightIndex, new Vector3(defaultToprightPos.x, yValueLerp, defaultToprightPos.z));
         }

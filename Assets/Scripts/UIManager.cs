@@ -2,21 +2,19 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // GUI-childs references
-    [SerializeField] GameObject HomeGUI;
-    // [SerializeField] GameObject PauseGUI;
+    [SerializeField] HomeGUILogic homeGUILogic;
 
-    private void Awake()
+    private void Start()
     {
         Time.timeScale = 0f;
     }
 
     public void Play()
     {
-        // set timescale to 1 and deactivate the HomeGUI
+        // set time scale to 1
         Time.timeScale = 1f;
-
-        HomeGUI.SetActive(false);
+        // deactivate the home gui
+        homeGUILogic.Deactivate();
     }
 
     public void OnPause()
